@@ -91,12 +91,13 @@ export default class App extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <List  listData={listData} showDetails={this.showDetails} />
+        <List  listData={listData} callBackDetails={this.callBackDetails} optionParams={ {'isThumbnailVisible' : true, show_details_icon: require('./src/img/r_arrow_1.png')} } />
       </View>
     );
   }
-  showDetails(url) {
-    alert('url')
+  callBackDetails(list) {
+    console.log('title: ', list.title, ', description: ',list.description, ', url: ', list.url);
+    alert('title: '+ list.title +', description: '+list.description +', url: '+ list.url);
   }
 }
 
