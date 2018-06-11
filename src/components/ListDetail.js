@@ -11,6 +11,7 @@ const ListDetail = ({ list, callBackDetails, optionParams  }) => {
         image, 
         url
     } = list;
+
     const { 
         thumbnailStyle, 
         headerContentStyle, 
@@ -25,7 +26,7 @@ const ListDetail = ({ list, callBackDetails, optionParams  }) => {
             return <View/>;
         }
         return(
-            <View style={thumbnailContainerStyle}>
+            <View style={[thumbnailContainerStyle, optionParams.thumbnailStyle]}>
                 <Image 
                     style={thumbnailStyle} 
                     source={{ uri: thumbnail_image }} 
@@ -40,22 +41,22 @@ const ListDetail = ({ list, callBackDetails, optionParams  }) => {
         return title;
     }
     loadArrowImage = () => {
-        let iconPath = optionParams.show_details_icon;
+        let iconPath = optionParams.showDetailsArrowIcon;
         var arrowIconeImageName =  (optionParams && iconPath)?  iconPath : require('../img/r_arrow.png');
         return (
             <Image 
-                style={navIconStyle} 
+                style={[navIconStyle,optionParams.navIconStyle]} 
                 source={ arrowIconeImageName }  
             />
         )
     }
     return (
         <Card>
-            <CardSection style={{height:LIST_HEIGHT}}>
+            <CardSection style={{height:optionParams.listHeight? optionParams.listHeight : LIST_HEIGHT}}>
                 {this.loadThumbnail()}
                 <View style={headerContentStyle}>
-                    <Text style={headerTextStyle}>{this.loadTitle(title)}</Text>
-                    <Text style={{height:50}}>{description}</Text>
+                    <Text style={[headerTextStyle,optionParams.titleStyle]}>{this.loadTitle(title)}</Text>
+                    <Text style={[{height:((optionParams.listHeight? optionParams.listHeight : LIST_HEIGHT)-40),color:'#85878C'}, optionParams.contentStyle]}>{description}</Text>
                 </View>
                 <View style={navContentStyle}>
                     <TouchableWithoutFeedback onPress={() => {callBackDetails(list)}}>
@@ -70,6 +71,7 @@ const styles = {
     headerContentStyle: {
         flex: 3,
         flexDirection: 'column',
+        
     },
     headerTextStyle: {
         fontSize: 18,

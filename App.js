@@ -91,7 +91,17 @@ export default class App extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <List  listData={listData} callBackDetails={this.callBackDetails} optionParams={ {'isThumbnailVisible' : true, show_details_icon: require('./src/img/r_arrow_1.png')} } />
+        <List  listData={listData} callBackDetails={this.callBackDetails} optionParams={ 
+          {
+            'isThumbnailVisible' : true, 
+            showDetailsArrowIcon: require('./src/img/r_arrow_1.png'),
+            listHeight: 120,
+            titleMaxVisibleChars:100,
+            thumbnailStyle:{},
+            navIconStyle:{},
+            titleStyle:{color:'#15C39A', fontSize:20},
+            contentStyle:{color:'#85878C'}
+          } } />
       </View>
     );
   }

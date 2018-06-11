@@ -13,7 +13,7 @@ class List extends Component {
         }): this.props.listData;
         
         return filteredData.map(list => 
-            <ListDetail key={list.title} list={list} showDetails={this.props.showDetails} optionParams={this.props.optionParams}/>
+            <ListDetail key={list.title} list={list} callBackDetails={this.props.callBackDetails}  optionParams={this.props.optionParams}/>
         )
     };
     
