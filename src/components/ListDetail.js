@@ -4,14 +4,18 @@ import { Card, CardSection, Button } from './common';
 const MAX_TITLE_WIDTH = 22;
 const LIST_HEIGHT = 100;
 const ListDetail = ({ list, callBackDetails, optionParams  }) => {
-    const { 
-        title, 
-        description, 
-        thumbnail_image, 
-        image, 
-        url
-    } = list;
-
+    const {
+        isDataMapChange,
+        title,
+        description,
+        thumbnail_image
+    } = optionParams.dataMap;
+    state = {
+        title: (isDataMapChange?list[title]:list['title']),
+        description: (isDataMapChange?list[description]:list['description']),
+        thumbnail_image: (isDataMapChange?list[thumbnail_image]:list['thumbnail_image'])
+    };
+    //dataMap:{ isDataMapChange: true, title:'header', description:'header_content', thumbnail_image:'icon' }
     const { 
         thumbnailStyle, 
         headerContentStyle, 
@@ -29,7 +33,7 @@ const ListDetail = ({ list, callBackDetails, optionParams  }) => {
             <View style={[thumbnailContainerStyle, optionParams.thumbnailStyle]}>
                 <Image 
                     style={thumbnailStyle} 
-                    source={{ uri: thumbnail_image }} 
+                    source={{ uri: this.state.thumbnail_image }} 
                 />
             </View>
         )
@@ -55,8 +59,8 @@ const ListDetail = ({ list, callBackDetails, optionParams  }) => {
             <CardSection style={{height:optionParams.listHeight? optionParams.listHeight : LIST_HEIGHT}}>
                 {this.loadThumbnail()}
                 <View style={headerContentStyle}>
-                    <Text style={[headerTextStyle,optionParams.titleStyle]}>{this.loadTitle(title)}</Text>
-                    <Text style={[{height:((optionParams.listHeight? optionParams.listHeight : LIST_HEIGHT)-40),color:'#85878C'}, optionParams.contentStyle]}>{description}</Text>
+                    <Text style={[headerTextStyle,optionParams.titleStyle]}>{this.loadTitle(this.state.title)}</Text>
+                    <Text style={[{height:((optionParams.listHeight? optionParams.listHeight : LIST_HEIGHT)-40),color:'#85878C'}, optionParams.contentStyle]}>{this.state.description}</Text>
                 </View>
                 <View style={navContentStyle}>
                     <TouchableWithoutFeedback onPress={() => {callBackDetails(list)}}>

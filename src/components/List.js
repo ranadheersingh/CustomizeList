@@ -8,12 +8,23 @@ const height = (Dimensions.get('window').height - 120);
 class List extends Component {
     state = {seachString : ''};
     renderLists() {
+        state = {
+            seachString: ''
+        };
+        const {
+            title,
+            description,
+            isDataMapChange
+        } = this.props.optionParams.dataMap;
+        
         const filteredData = this.state.seachString ? this.props.listData.filter(list => {
-          return list.title.indexOf(this.state.seachString) > -1;
+            let title_1 = (isDataMapChange?list[title]:list['title']);
+            let description_1 = (isDataMapChange?list[description]:list['description']);
+            return (title_1.toLowerCase().indexOf(this.state.seachString.toLowerCase()) > -1 || description_1.toLowerCase().indexOf(this.state.seachString.toLowerCase()) > -1);
         }): this.props.listData;
         
-        return filteredData.map(list => 
-            <ListDetail key={list.title} list={list} callBackDetails={this.props.callBackDetails}  optionParams={this.props.optionParams}/>
+        return filteredData.map((list,index) => 
+            <ListDetail key={index} list={list} callBackDetails={this.props.callBackDetails}  optionParams={this.props.optionParams}/>
         )
     };
     
