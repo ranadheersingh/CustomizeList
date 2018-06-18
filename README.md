@@ -6,11 +6,6 @@ This is Customize card view list for Android and iOS React-Native apps. can use 
 ![](https://raw.githubusercontent.com/ranadheersingh/CustomizeList/master/src/img/screen.png)
 
 
-### Changelog
-#### 0.0.1
-- Use RefreshControl instead of own implementation for pull-to-refresh (PR @SpaceK33z)
-
-
 
 ### Simple example
 
