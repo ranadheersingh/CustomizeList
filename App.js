@@ -11,7 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
-import List from './src/components/List';
+import CardViewList from './src/components/CardViewList';
 import Header from './src/components/common';
 const listData = [
   {
@@ -71,7 +71,7 @@ export default class App extends Component {
   render() {
     return (
       <View>
-        <List  listData={listData} callBackDetails={this.callBackDetails}  optionParams={ 
+        <CardViewList  listData={listData} callBackDetails={this.callBackDetails}  optionParams={ 
           {
             dataMap:{ isDataMapChange: true, title:'header', description:'header_content', thumbnail_image:'icon' },
             'isThumbnailVisible': true, 
