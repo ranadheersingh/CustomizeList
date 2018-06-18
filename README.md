@@ -3,7 +3,7 @@
 This is Customize card view list for Android and iOS React-Native apps. can use as it is or customized as per their app.
 
 
-![](https://raw.githubusercontent.com/ranadheersingh/CustomizeList/master/src/img/screen.png)
+![](https://raw.githubusercontent.com/ranadheersingh/CustomizeList/master/src/img/screen1.png)
 
 
 
